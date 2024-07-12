@@ -3115,6 +3115,32 @@ function getRoomList($type = 1, $category = ""){
 		ORDER BY pinned DESC, room_count DESC, room_action DESC
 	");
 	}
+	else if ($category == "dating") {
+		$rooms = $mysqli->query("
+		SELECT *,
+			(SELECT COUNT(boom_users.user_id) 
+			 FROM boom_users 
+			 WHERE boom_users.user_roomid = boom_rooms.room_id 
+			   AND last_action > '$check_action' 
+			   AND user_status != 99) as room_count
+		FROM boom_rooms 
+		WHERE boom_rooms.category = 'dating'
+		ORDER BY pinned DESC, room_count DESC, room_action DESC
+	");
+	}
+	else if ($category == "friendship") {
+		$rooms = $mysqli->query("
+		SELECT *,
+			(SELECT COUNT(boom_users.user_id) 
+			 FROM boom_users 
+			 WHERE boom_users.user_roomid = boom_rooms.room_id 
+			   AND last_action > '$check_action' 
+			   AND user_status != 99) as room_count
+		FROM boom_rooms 
+		WHERE boom_rooms.category = 'friendship'
+		ORDER BY pinned DESC, room_count DESC, room_action DESC
+	");
+	}
 	else {
 		$rooms = $mysqli->query(" 
 		SELECT *, 
