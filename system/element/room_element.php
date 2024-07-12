@@ -14,7 +14,19 @@ if($data['user_id'] == $boom['room_creator']){
 	$owner = 'owner ';
 }
 ?>
-<div class="room_element room_elem blisting" onclick="switchRoom(<?php echo $boom['room_id']; ?>, <?php echo $ask; ?>, <?php echo $boom['access']; ?>);">
+<div class="cch_roomCard"
+    onclick="switchRoom(<?php echo $boom['room_id']; ?>, <?php echo $ask; ?>, <?php echo $boom['access']; ?>);">
+    <div class="cch_roomImage" style="background-image: url(<?php echo myRoomIcon($boom['room_icon']); ?>)"></div>
+    <div class="cch_roomDetails">
+        <h2><?php echo $boom['room_name']; ?></h2>
+        <p> <?php echo $description; ?> </p>
+        <div class="cch_roomCount">
+            <i class="fa fa-solid fa-users"></i>
+            <p><?php echo $boom['room_count']; ?></p>
+        </div>
+    </div>
+</div>
+<!-- <div class="room_element room_elem blisting" onclick="switchRoom(<?php echo $boom['room_id']; ?>, <?php echo $ask; ?>, <?php echo $boom['access']; ?>);">
 	<div class="bcell_mid room_icon_wrap">
 		<img class="room_icon lazy" data-src="<?php echo myRoomIcon($boom['room_icon']); ?>" src="<?php echo imgLoader(); ?>"/>
 	</div>
@@ -47,4 +59,4 @@ if($data['user_id'] == $boom['room_creator']){
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->

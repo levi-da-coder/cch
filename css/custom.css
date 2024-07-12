@@ -1,0 +1,135 @@
+/* Lobby Start */
+#container_rooms {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.cch_roomCard {
+    width: 171px;
+    border: 1px solid black;
+    margin-right: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.cch_roomImage {
+    width: 170px;
+    height: 150px;
+    background-size: cover;
+    background-position: center center;
+}
+.cch_roomDetails {
+    width: 100%;
+    background-color: #222222;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.cch_roomDetails > h2 {
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.cch_roomDetails > p {
+    color: white;
+    font-size: 11px;
+    font-weight: regular;
+    padding-right: 10px;
+}
+.cch_roomCount {
+    display: flex;
+    color: white;
+    margin-top: 10px;
+}
+.cch_roomCount > i {
+    color: white;
+    margin-right: 8px;
+}
+
+.lobby__navbar {
+    width: 100%;
+    height: 40px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lobby__navbar > div {
+    display: flex;
+    /* background-color: orange; */
+}
+
+.lobby__navbar > div > li {
+    margin-right: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    letter-spacing: .5px;
+}
+
+.lobby__filterBold {
+    font-weight: bold;
+}
+
+.cch__filterHover {
+    width: 97.5%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    bottom: 20px;
+}
+.cch__filterHover > .filterInner {
+    width: 100%;
+    background-color: black;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.cch__filterHover > .filterInner > div {
+    color: white;
+    width: 60px;
+    height: 55px;
+    border: 1px solid white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cch__filterHover > .filterInner > div > i {
+    font-size: 17px;
+    margin-bottom: 2px;
+    
+}
+.cch__filterHover > .filterInner > div > p {
+    font-size: 11px;
+    margin-bottom: 4px;
+    margin-top: 3px;
+}
+@media (max-width: 768px) {
+    #container_rooms {
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+    }
+}
+@media (min-width: 470px) {
+    .cch__extraSpace {
+        display: block;
+    }
+    .cch__filterHover {
+        display: none;
+    }
+}
+@media (max-width: 470px) {
+    .lobby__navbar {
+        display: none;
+    }
+    .cch__extraSpace {
+        display: none;
+    }
+}
+/* Lobby End */

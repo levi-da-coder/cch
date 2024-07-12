@@ -3079,7 +3079,7 @@ function createPag($content, $max, $custom = array()){
 		return $r['empty'];
 	}
 }
-function getRoomList($type = 1){
+function getRoomList($type = 1, $category = ""){
 	global $mysqli;
 	$check_action = getDelay();
 	if($type == 1){
@@ -3088,12 +3088,41 @@ function getRoomList($type = 1){
 	else if($type == 2){
 		$f = 'element/room_element_chat';
 	}
-	$rooms = $mysqli->query(" 
+	if ($category == "popular") {
+		$rooms = $mysqli->query("
+		SELECT *,
+			(SELECT COUNT(boom_users.user_id) 
+			 FROM boom_users 
+			 WHERE boom_users.user_roomid = boom_rooms.room_id 
+			   AND last_action > '$check_action' 
+			   AND user_status != 99) as room_count
+		FROM boom_rooms 
+		WHERE boom_rooms.room_id = 1
+		ORDER BY pinned DESC, room_count DESC, room_action DESC
+	");
+	
+	} 
+	else if ($category == "country") {
+		$rooms = $mysqli->query("
+		SELECT *,
+			(SELECT COUNT(boom_users.user_id) 
+			 FROM boom_users 
+			 WHERE boom_users.user_roomid = boom_rooms.room_id 
+			   AND last_action > '$check_action' 
+			   AND user_status != 99) as room_count
+		FROM boom_rooms 
+		WHERE boom_rooms.category = 'country'
+		ORDER BY pinned DESC, room_count DESC, room_action DESC
+	");
+	}
+	else {
+		$rooms = $mysqli->query(" 
 		SELECT *, 
 		(SELECT Count(boom_users.user_id) FROM boom_users  Where boom_users.user_roomid = boom_rooms.room_id AND last_action > '$check_action' AND user_status != 99) as room_count
 		FROM  boom_rooms 
 		ORDER BY pinned DESC, room_count DESC, room_action DESC
 	");
+	}
 	$sroom = 0;
 	$room_list = '';
 	while ($room = $rooms->fetch_assoc()){
