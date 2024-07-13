@@ -17,11 +17,15 @@
     <title>Document</title>
 </head>
 
-<body style="background-color: hsl(49 27% 92% / 1);">
+<body>
+    <?php include('loader.php'); ?>
     <!-- navigation -->
     <nav></nav>
     <!-- navigation end -->
     <!-- Login Form -->
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
     <div class="main-login-form">
         <h2 class="first">Meet, Greet, Enjoy</h2>
         <h2 class="second">Create memories, friendships</h2>
@@ -145,7 +149,7 @@
             <button onclick="registerNow()">Register Now</button>
             <br />
         </div>
-        <h3>OR</h3>
+        <h3 style="color: white;">OR</h3>
         <button id="registerButton" onclick="showRegister()">Register Now</button>
         <button id="loginButton" onclick="showLogin()">Login Now</button>
     </div>

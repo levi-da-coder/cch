@@ -1,5 +1,5 @@
 body {
-  background-color: hsl(49 27% 92% / 1);
+  background-color: #111 !important;
   margin: 0;
   padding: 0;
 }
@@ -16,11 +16,13 @@ nav {
   flex-direction: column;
   padding-top: 60px;
   overflow-y: hidden;
+  z-index: 99;
+  position: relative;
 }
 .login-container {
   width: 450px;
   height: 300px;
-  border: 1px solid lightgrey;
+  border: 1px solid #bdc3c7;
   border-radius: 40px;
   margin-top: 10px;
 }
@@ -34,6 +36,7 @@ nav {
   margin-bottom: 19px;
 }
 h2 {
+  color: white;
   line-height: 2px;
   font-family: "Gilda Display", serif;
   font-weight: 400;
@@ -55,16 +58,16 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #F2F0E8;
+  background-color: #151515;
 }
 .register-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #F2F0E8;
+  background-color: #151515;
   width: 450px;
 
-  border: 1px solid lightgrey;
+  border: 1px solid #bdc3c7;
   border-radius: 40px;
   margin-top: 10px;
 
@@ -108,7 +111,7 @@ input {
   border: 1px solid grey;
   border-radius: 10px;
   margin-bottom: 15px;
-  background-color: #F8F8F7;
+  background-color: transparent;
 }
 input::placeholder {
   font-weight: bold;
@@ -125,10 +128,12 @@ input::placeholder {
   font-family: "Roboto", sans-serif !important;
   font-weight: 100;
   font-style: normal;
+  color: white;
 }
 .one-liner {
   margin-top: 15px;
   margin-bottom: 15px;
+  color: white;
 }
 
 #pfp {
@@ -143,7 +148,7 @@ input::placeholder {
   width: 230px;
   padding-top: 15px;
   padding-bottom: 15px;
-  color: black;
+  color: white;
   background: transparent;
   font-size: 16px;
   border: 1px solid grey;
@@ -167,6 +172,8 @@ input::placeholder {
   padding-left: 10px;
   padding-bottom: 15px;
   border-radius: 10px;
+  background-color: transparent;
+  color: white;
 }
 /* Animations */
 @keyframes rotateY {
@@ -239,4 +246,97 @@ input::placeholder {
   font-weight: 500;
   font-style: normal;
   border-radius: 7px !important;
+}
+
+@keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+@-webkit-keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+@-moz-keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+@-ms-keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+
+@keyframes move-clouds-back {
+  from {background-position:0 0;}
+  to {background-position:10000px 0;}
+}
+@-webkit-keyframes move-clouds-back {
+  from {background-position:0 0;}
+  to {background-position:10000px 0;}
+}
+@-moz-keyframes move-clouds-back {
+  from {background-position:0 0;}
+  to {background-position:10000px 0;}
+}
+@-ms-keyframes move-clouds-back {
+  from {background-position: 0;}
+  to {background-position:10000px 0;}
+}
+
+.stars, .twinkling, .clouds {
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+width:100%;
+height:100%;
+display:block;
+}
+
+.stars {
+background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+z-index:0;
+}
+
+.twinkling{
+background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+z-index:1;
+
+-moz-animation:move-twink-back 200s linear infinite;
+-ms-animation:move-twink-back 200s linear infinite;
+-o-animation:move-twink-back 200s linear infinite;
+-webkit-animation:move-twink-back 200s linear infinite;
+animation:move-twink-back 200s linear infinite;
+}
+
+.clouds{
+  background:transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
+  z-index:3;
+
+-moz-animation:move-clouds-back 200s linear infinite;
+-ms-animation:move-clouds-back 200s linear infinite;
+-o-animation:move-clouds-back 200s linear infinite;
+-webkit-animation:move-clouds-back 200s linear infinite;
+animation:move-clouds-back 200s linear infinite;
+}
+.twinkling{
+background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+z-index:1;
+
+-moz-animation:move-twink-back 200s linear infinite;
+-ms-animation:move-twink-back 200s linear infinite;
+-o-animation:move-twink-back 200s linear infinite;
+-webkit-animation:move-twink-back 200s linear infinite;
+animation:move-twink-back 200s linear infinite;
+}
+
+.clouds{
+  background:transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
+  z-index:3;
+
+-moz-animation:move-clouds-back 200s linear infinite;
+-ms-animation:move-clouds-back 200s linear infinite;
+-o-animation:move-clouds-back 200s linear infinite;
+-webkit-animation:move-clouds-back 200s linear infinite;
+animation:move-clouds-back 200s linear infinite;
 }
