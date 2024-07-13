@@ -182,6 +182,7 @@ clearChat = (data) => {
     }
   }
 };
+
 chatReload = function () {
   var cPosted = Date.now();
   logsControl();
@@ -2784,7 +2785,15 @@ $(document).ready(function () {
       }
     );
   };
-
+  getListToInvite = function () {
+    $.post("system/box/inviteFriends_chat.php", {}, function (response) {
+      if (response == 0) {
+        return false;
+      } else {
+        overModal(response, 460);
+      }
+    });
+  };
   confirmClearPrivate = function () {
     hideAll();
     $.post(
@@ -2880,6 +2889,53 @@ $(document).ready(function () {
       });
     }
   });
+
+  inviteToChat = function (t) {
+    $("#inviteToChat__status").removeClass("fa fa-plus").addClass("fa fa-cog");
+
+    $.ajax({
+      url: "system/cch.php",
+      type: "POST",
+      data: {
+        type: 3,
+        t: t,
+      },
+      success: function (response) {
+        if (response == 99) {
+          alert("User already in your room!");
+          $("#inviteToChat__status")
+            .removeClass("fa fa-cog")
+            .addClass("fa fa-plus");
+        } else {
+          $("#inviteToChat__status")
+            .removeClass("fa fa-cog")
+            .addClass("fa fa-check");
+        }
+      },
+    });
+  };
+
+  updateRoom = function (r) {
+    if (r == "") {
+      return;
+    } else {
+      $.post({
+        url: "system/cch.php",
+        type: "POST",
+        data: {
+          type: 4,
+          r: r,
+        },
+        success: function (response) {
+          if (response == 1) {
+            location.reload();
+          } else {
+            callError(system.error);
+          }
+        },
+      });
+    }
+  };
 
   $(document).on("click", ".open_addons", function () {
     $("#addons_chat_list").toggle();

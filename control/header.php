@@ -61,6 +61,7 @@ if(!defined('BOOM')){
             </div>
         </div>
         <?php } ?>
+
         <div class="fmenu_item bhover pmenu_item" onclick="logOut();">
             <div class="fmenu_icon">
                 <i class="fa fa-sign-out menui"></i>

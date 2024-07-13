@@ -4170,6 +4170,36 @@ function createUserlist($list, $lazy = false){
 			</div>';
 }
 
+// userlist for inviting friends to chat
+function createUserListToInvite($list, $lazy = false){
+	if(!isVisible($list)){
+		return false;
+	}
+	$status = '';
+	$offline = 'offline';
+	
+	if($list['last_action'] > getDelay() || isBot($list)){
+		$offline = '';
+		$status = getListStatus($list);
+	}
+	if($lazy){
+		$avatar = '<img class="lazy avav acav ' . genderBorder($list['user_sex']) . '" data-src="' . myAvatar($list['user_tumb']) . '" src="' . imgLoader() . '"/>';
+	}
+	else {
+		$avatar = '<img class="avav acav ' . genderBorder($list['user_sex']) . '" src="' . myAvatar($list['user_tumb']) . '"/>';
+	}
+	return '<div data-i="u' . $list['user_id'] . '" data-av="'.myAvatar($list['user_tumb']).'" data-cover="' . $list['user_cover'] . '" data-id="'.$list['user_id'].'" data-name="'.$list['user_name'].'" data-rank="'.$list['user_rank'].'" data-bot="'.$list['user_bot'].'" data-country="' . uCountry($list) . '" data-gender="' . uGender($list) . '" data-age="' . uAge($list) . '" class="avtrig bhover user_item ' . $offline . '">
+				<div class="user_item_avatar">' . $avatar . ' ' . $status . '</div>
+				<div class="user_item_data">
+					<p class="username ' . myColorFont($list) . '">' . $list["user_name"] . '</p>
+					<p class="list_mood">' . $list['user_mood'] . '</p>
+				</div>
+				' . getListAction($list). '
+				<div class="user_item_icon icrank" onclick="inviteToChat('.$list['user_id'].')"><i class="fa fa-plus" id="inviteToChat__status" ></i></div>
+				' . getListFlag($list) . '
+			</div>';
+}
+
 function getListAction($user){
 	$action = '';
 	if(isGhosted($user) && canGhost()){

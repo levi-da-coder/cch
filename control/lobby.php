@@ -17,7 +17,7 @@ include('header.php');
 
                 </div> -->
                 <div class="cch__filterHover ">
-                    <div class="filterInner">
+                    <div class="filterInner" id="filterInner">
                         <div id="mfilterAll" onclick="applyMLobbyFilter('all')"
                             style="border: 1px solid #2ecc71; color: #2ecc71;">
                             <i class="fa fa-solid fa-reply-all" style=""></i>
